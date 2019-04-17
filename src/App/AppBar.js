@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import styled, {css} from 'styled-components';
+import {AppContext} from "./AppProvider";
 
 const Logo = styled.div `
   font-size: 1.5em;
@@ -25,15 +26,24 @@ const firstLetterUp = (up) => {
       .join(' ');
   } 
 
-function ControlButton({name, active}) {
+function ControlButton({name}) {
   return (
-    <ControlButtonElem active={active}>
-      {firstLetterUp(name)}
-    </ControlButtonElem>
+    <div>
+       <AppContext.Consumer>
+        {({page, setPage}) => (
+          <ControlButtonElem 
+            active={page === name}
+            onClick={() => setPage(name)}  
+          >
+          {firstLetterUp(name)}
+          </ControlButtonElem>
+        )}
+       </AppContext.Consumer>
+        
+    </div>
   )
 }
-
-
+ 
 export default function() {
   return <Bar>
     <Logo> CryptoDash </Logo>
