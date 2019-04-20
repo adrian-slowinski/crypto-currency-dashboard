@@ -22,7 +22,6 @@ const ControlButtonElem = styled.div `
   `}
 `
 
-<<<<<<< HEAD
 function toProperCase(lower){
   return lower.charAt(0).toUpperCase() + lower.substr(1);
 }
@@ -51,31 +50,4 @@ export default function(){
       <ControlButton name="settings"/> 
     </Bar>
   );
-=======
-function ControlButton({name}) {
-  return (
-    <div>
-       <AppContext.Consumer>
-        {({page, setPage}) => (
-          <ControlButtonElem 
-            active={page === name}
-            onClick={() => setPage(name)}  
-          >
-          {firstLetterUp(name)}
-          </ControlButtonElem>
-        )}
-       </AppContext.Consumer>
-        
-    </div>
-  )
-}
- 
-export default function() {
-  return <Bar>
-    <Logo> CryptoDash </Logo>
-    <div/>
-    <ControlButton active name="dashboard" />
-    <ControlButton name="settings" /> 
-  </Bar>
->>>>>>> da5059bb1eadba6225fb79bc94614dfb2966fd40
 }
