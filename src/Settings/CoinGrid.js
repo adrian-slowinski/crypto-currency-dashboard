@@ -10,15 +10,15 @@ export const CoinGridStyled = styled.div`
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
 `
-function getCoinsToDisplay(coinList) {
-  return Object.keys(coinList).slice(0, 250);
+function getCoinsToDisplay(coinList, topSection) {
+  return Object.keys(coinList).slice(0, topSection ? 10 : 250);
 }
 
-export default function () {
+export default function ({topSection}) {
   return <AppContext.Consumer> 
     {({coinList}) => <CoinGridStyled> 
-      {getCoinsToDisplay(coinList).map(coinKey =>
-          <CoinTile key={coinKey}   coinKey={coinKey}/>
+      {getCoinsToDisplay(coinList, topSection).map(coinKey =>
+          <CoinTile topSection={topSection} key={coinKey}   coinKey={coinKey}/>
         )}
     </CoinGridStyled> }
   </AppContext.Consumer>

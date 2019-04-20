@@ -20,9 +20,12 @@ const DeleteIcon = styled.div`
   }
 `;
 
-export default function ( {name, symbol} ) {
+export default function ( {name, symbol, topSection} ) {
   return <CoinHeaderGridStyled> 
     <div> {name} </div>
-    <CoinSymbol> {symbol} </CoinSymbol>
+    {topSection ?  (
+      <DeleteIcon> x </DeleteIcon>
+    ) : (<CoinSymbol> {symbol} </CoinSymbol> )}
+    
   </CoinHeaderGridStyled>;
 }
